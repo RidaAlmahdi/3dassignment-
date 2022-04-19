@@ -318,17 +318,29 @@ a, button, input, select {
 				
 
             })
+			let f = new Fetcher(client)
+let url = 'https://api.linkedin.com/v2/me'
+f.fetch(url, {})
+	.then((data) => {
+		return data.json()
+	})
+	.then((data) => {
+		console.log("I got protected json data from the API", data)
+	})
+	.catch((err) => {
+		console.error("Error from fetcher", err)
+	})
 		}
-		const params = new URLSearchParams(window.location.search)
-		console.log(params.get("code"));
-		const Http = new XMLHttpRequest();
-const url='https://api.linkedin.com/v2/me';
-Http.open("GET", url);
-Http.send();
+// 		const params = new URLSearchParams(window.location.search)
+// 		console.log(params.get("code"));
+// 		const Http = new XMLHttpRequest();
+// const url='https://api.linkedin.com/v2/me';
+// Http.open("GET", url);
+// Http.send();
 
-Http.onreadystatechange = (e) => {
-  console.log(Http.responseText)
-}
+// Http.onreadystatechange = (e) => {
+//   console.log(Http.responseText)
+// }
 
 
 </script>
