@@ -44,7 +44,15 @@ function facebookLogin() {                      // Testing Graph API after login
         console.log('email: '+response.email)
         console.log('firstName: '+response.first_name)
         console.log('lastName: '+response.last_name)
-       
+        FB.api(
+          "/me/friendlists",
+          function (response1) {
+            if (response1 && !response1.error) {
+              console.log('firends list: '+response1)
+
+            }
+          }
+      );
       }
     }
   );
