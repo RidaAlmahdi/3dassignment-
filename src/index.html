@@ -326,6 +326,8 @@ f.fetch(url, {})
 	})
 	.then((data) => {
 		console.log("I got protected json data from the API", data)
+		sessionStorage.setItem("key", data);
+
 	})
 	.catch((err) => {
 		console.error("Error from fetcher", err)
@@ -341,7 +343,8 @@ f.fetch(url, {})
 // Http.onreadystatechange = (e) => {
 //   console.log(Http.responseText)
 // }
-
+let lastname = sessionStorage.getItem("key");
+console.log(lastname);
 
 </script>
         <script type="module" src="script.js"></script>
