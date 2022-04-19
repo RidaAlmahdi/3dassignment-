@@ -258,7 +258,7 @@ a, button, input, select {
 	fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
   
-  function checkLoginState() {
+  function checkLoginState1() {
 	FB.login(function (response) {
 	  // console.log(response.authResponse.userID);
 	  if (response.status === 'connected') {
@@ -297,6 +297,40 @@ a, button, input, select {
 	)}
   
 		</script>
+<!-- <script type="text/javascript" src="https://unpkg.com/jso/dist/jso.js"></script> -->
+<script src="../node_modules/jso/dist/jso.js"></script>
+
+<script>
+	function checkLoginState()
+	{
+	let client = new jso.JSO({
+		response_type : "code",
+            client_id: "78k2efngtt41sw",
+            redirect_uri: "http://192.168.1.105:8080/",
+            authorization: "https://www.linkedin.com/oauth/v2/authorization",
+            scopes: { request: ["r_liteprofile"] }
+        });
+        client.callback();
+        client.getToken()
+            .then((code) => {
+				sessionStorage.setItem('key', code);
+				
+
+            })
+		}
+		const params = new URLSearchParams(window.location.search)
+		console.log(params.get("code"));
+		const Http = new XMLHttpRequest();
+const url='https://api.linkedin.com/v2/me';
+Http.open("GET", url);
+Http.send();
+
+Http.onreadystatechange = (e) => {
+  console.log(Http.responseText)
+}
+
+
+</script>
         <script type="module" src="script.js"></script>
         <!-- <script  src="facebook-login-integrated.js"></script> -->
         <div id="info"><a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> css3d - periodic table.</div>
