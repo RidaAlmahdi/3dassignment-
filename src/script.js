@@ -1,5 +1,3 @@
-
-import * as JSO from '../node_modules/jso/dist/jso.js';
 import * as THREE from 'three';
 
 			import { TWEEN } from 'three/examples/jsm/libs/tween.module.min.js';
