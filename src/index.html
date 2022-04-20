@@ -298,8 +298,9 @@ a, button, input, select {
   
 		</script>
 <!-- <script type="text/javascript" src="https://unpkg.com/jso/dist/jso.js"></script> -->
-<!-- <script src="../node_modules/jso/dist/jso.js"></script> -->
+<!-- <script src="../node_modules/node-fetch/@types/"></script> -->
 <script type="text/javascript" src="https://unpkg.com/jso/dist/jso.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/request/2.81.0/index.js"></script>
 
 <script>
 	function checkLoginState()
@@ -318,33 +319,16 @@ a, button, input, select {
 				
 
             })
-			let f = new Fetcher(client)
-let url = 'https://api.linkedin.com/v2/me'
-f.fetch(url, {})
-	.then((data) => {
-		return data.json()
-	})
-	.then((data) => {
-		console.log("I got protected json data from the API", data)
-		sessionStorage.setItem("key", data);
 
-	})
-	.catch((err) => {
-		console.error("Error from fetcher", err)
-	})
 		}
-// 		const params = new URLSearchParams(window.location.search)
-// 		console.log(params.get("code"));
-// 		const Http = new XMLHttpRequest();
-// const url='https://api.linkedin.com/v2/me';
-// Http.open("GET", url);
-// Http.send();
+		const token = new URLSearchParams(window.location.search)
+		console.log(params.get("code"));
+			
+		params = {'oauth2_access_token': token.get("key")}
+response = requests.get('https://api.linkedin.com/v2/me', params = params)
 
-// Http.onreadystatechange = (e) => {
-//   console.log(Http.responseText)
-// }
-let lastname = sessionStorage.getItem("key");
-console.log(lastname);
+print(json.dumps(response.json(), indent=1))
+
 
 </script>
         <script type="module" src="script.js"></script>
